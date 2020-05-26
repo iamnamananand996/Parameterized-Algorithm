@@ -20,33 +20,15 @@ LOWER_LIMIT = 8
 
 
 def generate_test_case(n, k):
-
     vertices = set([])
     edges = {}
-
-    # add all vertices to the vertex set
     for i in range(0, n):
         vertices.add('v_' + str(i))
-
-    # select the vertex cover
-
     vc_size = k
-
-    # uncomment the below lines if you want the vc size to be
-    # selected randomly
-
-#    vc_size = int(n/UPPER_LIMIT)
-#    while vc_size >= int(n/UPPER_LIMIT) or vc_size < int(n/LOWER_LIMIT):
-#        vc_size = int(n * random.random())
-#    k = (int(vc_size/10) + 1) * 10
-
     vertex_list = list(vertices)
     vc = [vertex_list[i]
           for i in random.sample(range(len(vertex_list)), vc_size)]
     vc = set(vc)
-
-    # generate edges for each vertex in the vertex cover
-
     for start in vc:
         if not (start in edges):
             edges[start] = []
@@ -58,9 +40,7 @@ def generate_test_case(n, k):
                 continue
             if new_stop_str not in edges[start]:
                 edges[start].append(new_stop_str)
-
     G = UndirectedGraph(vertices, edges)
-
     return (G, vc)
 
 
