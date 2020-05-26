@@ -13,21 +13,15 @@ TIME_MAX = 30
 
 
 def param_vc_wrapper(G, S, next_vertex_count):
-   
     current_time = time.time()
-
     if len(S) > k:
         return (None, current_time - start_time)
-
     if check_vertex_cover(G, S):
         return (S, current_time - start_time)
-
     if len(S) == k:
         return (None, current_time - start_time)
- 
     new_vc = S.copy()
     new_vc.add(sorted_vertices[next_vertex_count])
-
     current_time = time.time()
     if current_time - start_time > TIME_MAX:
         return (None, TIME_MAX)
@@ -37,7 +31,6 @@ def param_vc_wrapper(G, S, next_vertex_count):
     current_time = time.time()
     if current_time - start_time > TIME_MAX:
         return (None, TIME_MAX)
-  
     current_time = time.time()
     if current_time - start_time > TIME_MAX:
         return (None, TIME_MAX)
@@ -45,7 +38,6 @@ def param_vc_wrapper(G, S, next_vertex_count):
         G.E[sorted_vertices[next_vertex_count]]), next_vertex_count + 1)
     if branch2 != None:
         return (branch2, current_time - start_time)
-
     current_time = time.time()
     return (None, current_time - start_time)
 
