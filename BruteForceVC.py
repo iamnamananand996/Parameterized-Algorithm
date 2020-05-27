@@ -17,3 +17,14 @@ def brute_force_VC(G):
             if current_time - start_time > TIME_MAX:
                 return (None, TIME_MAX)
     return (None, current_time - start_time)
+
+
+
+
+
+
+
+
+
+
+
